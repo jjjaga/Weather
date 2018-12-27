@@ -14,7 +14,6 @@ public class WeatherActivity extends AppCompatActivity {
     public static Button button;
     public static EditText enterCity;
     View view;
-    UpdateWeather upd = new UpdateWeather();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +25,12 @@ public class WeatherActivity extends AppCompatActivity {
         imageWeather = findViewById(R.id.imageWeather);
         button = findViewById(R.id.button);
         enterCity = findViewById(R.id.enterCity);
+        updateButton(view);
     }
     public void updateButton(View view)
     {
+        UpdateWeather upd = new UpdateWeather();
+        upd.city = null;
         upd.city = enterCity.getText().toString();
         upd.lang = "ru";
         upd.days = "7";

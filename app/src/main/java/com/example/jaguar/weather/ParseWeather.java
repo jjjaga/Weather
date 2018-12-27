@@ -14,9 +14,14 @@ public class ParseWeather {
                 String location = json.getJSONObject("location").getString("name");
                 String temp = json.getJSONObject("current").getString("temp_c");
                 String speedwind = json.getJSONObject("current").getString("wind_kph");
+                String humidity = json.getJSONObject("current").getString("humidity");
                 String cond = json.getJSONObject("current").getJSONObject("condition").getString("text");
                 UrliconWeather = json.getJSONObject("current").getJSONObject("condition").getString("icon");
-                WeatherActivity.text.setText("Город: "+location+"\nt " + temp +"\n"+cond+"\n"+"Скорость ветра "+ speedwind);
+                WeatherActivity.text.setText("Город: "+location+"\n"+
+                        "t " + temp +"\n"+
+                        cond+"\n" +
+                        "Скорость ветра "+speedwind+" km/h"+"\n" +
+                        "Влажность "+humidity+" %\n");
 
             }catch(Exception e){
             }
