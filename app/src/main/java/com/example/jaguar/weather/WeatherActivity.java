@@ -21,7 +21,6 @@ public class WeatherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather);
 
         text = findViewById(R.id.hello);
-        text.setText("null");
         imageWeather = findViewById(R.id.imageWeather);
         button = findViewById(R.id.button);
         enterCity = findViewById(R.id.enterCity);
@@ -29,11 +28,6 @@ public class WeatherActivity extends AppCompatActivity {
     }
     public void updateButton(View view)
     {
-        UpdateWeather upd = new UpdateWeather();
-        upd.city = null;
-        upd.city = enterCity.getText().toString();
-        upd.lang = "ru";
-        upd.days = "7";
-        upd.execute();
+        new UpdateWeather(enterCity.getText().toString(),"ru","7").execute();
     }
 }
