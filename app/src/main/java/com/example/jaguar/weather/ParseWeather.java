@@ -8,8 +8,11 @@ import java.io.InputStream;
 
 public class ParseWeather {
     public String UrliconWeather;
+    WeatherObjFactory.WeatherObj wth;
 
-            public void  parseWeather(JSONObject json){
+    public void  parseWeather(JSONObject json){
+        wth = new WeatherObjFactory.WeatherObj();
+
             try {
                 String location = json.getJSONObject("location").getString("name");
                 String temp = json.getJSONObject("current").getString("temp_c");
@@ -17,7 +20,7 @@ public class ParseWeather {
                 String humidity = json.getJSONObject("current").getString("humidity");
                 String cond = json.getJSONObject("current").getJSONObject("condition").getString("text");
                 UrliconWeather = json.getJSONObject("current").getJSONObject("condition").getString("icon");
-                WeatherActivity.text.setText("Город: "+location+"\n"+
+                wth.setText("Город: "+location+"\n"+
                         "t " + temp +"\n"+
                         cond+"\n" +
                         "Скорость ветра "+speedwind+" km/h"+"\n" +
@@ -29,6 +32,7 @@ public class ParseWeather {
                 ImageLoad load = new ImageLoad();
                 load.execute(UrliconWeather);
             }
+        WeatherObjFactory.setWeatherObj(wth);
         }
     class ImageLoad extends AsyncTask<String, Void, Bitmap> {
 
@@ -45,7 +49,7 @@ public class ParseWeather {
         }
 
         protected void onPostExecute(Bitmap result) {
-            WeatherActivity.imageWeather.setImageBitmap(result);
+            wth.setImage(result);
         }
     }
     }

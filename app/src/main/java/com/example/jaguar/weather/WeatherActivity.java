@@ -1,33 +1,30 @@
 package com.example.jaguar.weather;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
+import java.util.List;
 
 public class WeatherActivity extends AppCompatActivity {
-    public static TextView text;
-    public static ImageView imageWeather;
-    public static Button button;
-    public static EditText enterCity;
-    View view;
-
+    WeatherAdapter wAdapter;
+    RecyclerView wRecyclerView;
+    static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        text = findViewById(R.id.hello);
-        imageWeather = findViewById(R.id.imageWeather);
-        button = findViewById(R.id.button);
-        enterCity = findViewById(R.id.enterCity);
-        updateButton(view);
-    }
-    public void updateButton(View view)
-    {
-        new UpdateWeather(enterCity.getText().toString(),"ru","7").execute();
+        context = getBaseContext();
+        wRecyclerView = findViewById(R.id.recyclerView);
+        wRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        new UpdateWeather("Moskow","ru","7");
+
+        List<WeatherObjFactory.WeatherObj> weatherList = WeatherObjFactory.getList();
+        wAdapter = new WeatherAdapter(weatherList);
+        wRecyclerView.setAdapter(wAdapter);
     }
 }
