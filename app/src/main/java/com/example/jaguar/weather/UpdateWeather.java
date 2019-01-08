@@ -10,7 +10,7 @@ public class UpdateWeather extends AsyncTask<Void, Void, JSONObject> {
     private String city;
     private String lang;
     private String days;
-    private final Callback callback;
+    private Callback callback;
 
     UpdateWeather(String city, String lang, String days, Callback callback) {
         this.city = city;

@@ -7,11 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherHolder>{
-    List<WeatherObjFactory.WeatherObj> wList;
+    List<WeatherObjFactory.WeatherObj> wList = new ArrayList<>();
     private Context context;
 
 //    public WeatherAdapter(List<WeatherObjFactory.WeatherObj> weatherList) {
@@ -38,5 +39,11 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherHolder>{
     @Override
     public int getItemCount() {
         return wList.size();
+    }
+
+    public void setAll(List<WeatherObjFactory.WeatherObj> objs) {
+        wList.clear();
+        wList.addAll(objs);
+        notifyDataSetChanged();
     }
 }

@@ -29,7 +29,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
             public void UpdateWeather(List<WeatherObjFactory.WeatherObj> objs) {
                     updateWeatherList(objs);
             }
-        });
+        }).execute();
     }
 
     private void updateWeatherList(List<WeatherObjFactory.WeatherObj> objs) {

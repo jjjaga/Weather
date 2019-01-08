@@ -15,13 +15,13 @@ public class WeatherObjFactory {
     public static WeatherObj weatherObj;
 
     public static class WeatherObj{
-        static Bitmap image;
+        static String image;
         static String text;
 
-        public Bitmap getImage() {
+        public String getImage() {
             return image;
         }
-        public void setImage(Bitmap image) {
+        public void setImage(String image) {
             this.image = image;
         }
         public String getText() {
