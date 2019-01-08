@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.Resources;
+package com.example.jaguar.weather.resources;
 
 public class ConstApi {
     public static final String OPEN_API ="http://api.apixu.com/v1/forecast.json?key=%s&q=%s&lang=%s&days=%s";

@@ -15,9 +15,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherHolder>{
     List<WeatherObjFactory.WeatherObj> wList = new ArrayList<>();
     private Context context;
 
-//    public WeatherAdapter(List<WeatherObjFactory.WeatherObj> weatherList) {
-//        wList = weatherList;
-//    }
 
     public WeatherAdapter(Context context) {
         this.context = context;

@@ -13,7 +13,6 @@ import java.io.InputStream;
 public class WeatherHolder extends RecyclerView.ViewHolder {
    public TextView weatherTextView;
    public ImageView weatherImageView;
-   Bitmap image;
 
     public WeatherHolder(View itemView) {
         super(itemView);
@@ -22,19 +21,24 @@ public class WeatherHolder extends RecyclerView.ViewHolder {
     }
     public void bindCrime(WeatherObjFactory.WeatherObj wObj) {
         weatherTextView.setText(wObj.getText());
-        //String UrliconWeather = wObj.getImage();
-        ImageLoad load = new ImageLoad();
+        String UrliconWeather = wObj.getImage();
+        ImageLoad load = new ImageLoad(weatherImageView, UrliconWeather);
         load.execute(wObj.getImage());
-        weatherImageView.setImageBitmap(image);
 
     }
     class ImageLoad extends AsyncTask<String, Void, Bitmap> {
+        private final ImageView weatherImageView;
+        private final String image;
+
+        public ImageLoad(ImageView weatherImgeView, String image) {
+            this.weatherImageView = weatherImgeView;
+            this.image = image;
+        }
 
         protected Bitmap doInBackground(String... strings) {
-            String UrliconWeather = null;
             Bitmap mIcon11 = null;
             try {
-                InputStream in = new java.net.URL(UrliconWeather).openStream();
+                InputStream in = new java.net.URL(image).openStream();
                 mIcon11 = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -43,9 +47,7 @@ public class WeatherHolder extends RecyclerView.ViewHolder {
         }
 
         protected void onPostExecute(Bitmap result) {
-            //wth.setImage(result);
-            //weatherImageView.setImageBitmap(result);
-            image = result;
+            weatherImageView.setImageBitmap(result);
         }
     }
 }

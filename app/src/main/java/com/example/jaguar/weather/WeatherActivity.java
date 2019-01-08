@@ -24,7 +24,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherView {
 
         weatherPresenter.onCreate();
 
-        new UpdateWeather("Москва","ru","7", new Callback() {
+        new UpdateWeather("Москва","ru","7", new CallBack() {
             @Override
             public void UpdateWeather(List<WeatherObjFactory.WeatherObj> objs) {
                     updateWeatherList(objs);

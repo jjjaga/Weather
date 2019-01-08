@@ -1,6 +1,6 @@
 package com.example.jaguar.weather;
 
-import com.example.jaguar.weather.Resources.ConstApi;
+import com.example.jaguar.weather.resources.ConstApi;
 
 import org.json.JSONObject;
 

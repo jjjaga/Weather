@@ -2,7 +2,7 @@ package com.example.jaguar.weather;
 
 import android.os.AsyncTask;
 
-import com.example.jaguar.weather.Resources.ConstApi;
+import com.example.jaguar.weather.resources.ConstApi;
 
 import org.json.JSONObject;
 
@@ -10,9 +10,9 @@ public class UpdateWeather extends AsyncTask<Void, Void, JSONObject> {
     private String city;
     private String lang;
     private String days;
-    private Callback callback;
+    private CallBack callback;
 
-    UpdateWeather(String city, String lang, String days, Callback callback) {
+    UpdateWeather(String city, String lang, String days, CallBack callback) {
         this.city = city;
         this.lang = lang;
         this.days = days;
@@ -28,7 +28,6 @@ public class UpdateWeather extends AsyncTask<Void, Void, JSONObject> {
     @Override
     protected void onPostExecute(JSONObject json) {
         ParseWeather parse = new ParseWeather();
-       // parse.parseWeather(json);
         callback.UpdateWeather(parse.parseWeather(json));
     }
 }
