@@ -7,14 +7,16 @@ import com.example.jaguar.weather.Resources.ConstApi;
 import org.json.JSONObject;
 
 public class UpdateWeather extends AsyncTask<Void, Void, JSONObject> {
-    public String city;
-    public String lang;
-    public String days;
+    private String city;
+    private String lang;
+    private String days;
+    private final Callback callback;
 
-    public UpdateWeather(String city, String lang, String days) {
+    UpdateWeather(String city, String lang, String days, Callback callback) {
         this.city = city;
         this.lang = lang;
         this.days = days;
+        this.callback = callback;
     }
 
     @Override
@@ -26,6 +28,7 @@ public class UpdateWeather extends AsyncTask<Void, Void, JSONObject> {
     @Override
     protected void onPostExecute(JSONObject json) {
         ParseWeather parse = new ParseWeather();
-        parse.parseWeather(json);
+       // parse.parseWeather(json);
+        callback.UpdateWeather(parse.parseWeather(json));
     }
 }

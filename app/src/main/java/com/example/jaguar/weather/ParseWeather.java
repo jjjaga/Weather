@@ -5,12 +5,14 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import org.json.JSONObject;
 import java.io.InputStream;
+import java.util.List;
 
 public class ParseWeather {
     public String UrliconWeather;
     WeatherObjFactory.WeatherObj wth;
+    List<WeatherObjFactory.WeatherObj> obj;
 
-    public void  parseWeather(JSONObject json){
+    public List<WeatherObjFactory.WeatherObj> parseWeather(JSONObject json){
         wth = new WeatherObjFactory.WeatherObj();
 
             try {
@@ -32,7 +34,8 @@ public class ParseWeather {
                 ImageLoad load = new ImageLoad();
                 load.execute(UrliconWeather);
             }
-        WeatherObjFactory.setWeatherObj(wth);
+            obj.add(wth);
+        return obj;
         }
     class ImageLoad extends AsyncTask<String, Void, Bitmap> {
 
