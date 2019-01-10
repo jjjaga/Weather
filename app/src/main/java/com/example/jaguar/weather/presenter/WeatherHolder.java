@@ -1,4 +1,4 @@
-package com.example.jaguar.weather;
+package com.example.jaguar.weather.presenter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.jaguar.weather.R;
+import com.example.jaguar.weather.model.WeatherObj;
 
 import java.io.InputStream;
 
@@ -19,7 +22,7 @@ public class WeatherHolder extends RecyclerView.ViewHolder {
         weatherImageView = itemView.findViewById(R.id.imageWeather);
         weatherTextView = itemView.findViewById(R.id.hello);
     }
-    public void bindCrime(WeatherObjFactory.WeatherObj wObj) {
+    public void bindCrime(WeatherObj wObj) {
         weatherTextView.setText(wObj.getText());
         String UrliconWeather = wObj.getImage();
         ImageLoad load = new ImageLoad(weatherImageView, UrliconWeather);

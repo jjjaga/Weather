@@ -1,9 +1,6 @@
-package com.example.jaguar.weather;
+package com.example.jaguar.weather.model;
 
 import android.os.AsyncTask;
-
-import com.example.jaguar.weather.resources.ConstApi;
-
 import org.json.JSONObject;
 
 public class UpdateWeather extends AsyncTask<Void, Void, JSONObject> {
@@ -12,7 +9,7 @@ public class UpdateWeather extends AsyncTask<Void, Void, JSONObject> {
     private String days;
     private CallBack callback;
 
-    UpdateWeather(String city, String lang, String days, CallBack callback) {
+    public UpdateWeather(String city, String lang, String days, CallBack callback) {
         this.city = city;
         this.lang = lang;
         this.days = days;
