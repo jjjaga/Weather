@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string-array name="countrylist">
+        <item>Moscow</item>
+        <item>Minsk</item>
+        <item>Berlin</item>
+        <item>Mexico</item>
+    </string-array>
 </resources>

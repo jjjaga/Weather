@@ -7,10 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.jaguar.weather.R;
 import com.example.jaguar.weather.model.WeatherObj;
-
 import java.io.InputStream;
 
 public class WeatherHolder extends RecyclerView.ViewHolder {

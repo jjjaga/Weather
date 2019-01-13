@@ -1,6 +1,5 @@
 package com.example.jaguar.weather.presenter;
 
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import com.example.jaguar.weather.R;
 import com.example.jaguar.weather.model.WeatherObj;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherHolder>{
     List<WeatherObj> wList = new ArrayList<>();

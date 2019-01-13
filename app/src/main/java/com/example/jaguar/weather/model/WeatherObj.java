@@ -1,6 +1,5 @@
 package com.example.jaguar.weather.model;
 
-
 public class WeatherObj {
     private String image;
     private String text;
