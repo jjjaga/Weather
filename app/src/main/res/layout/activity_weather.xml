@@ -8,18 +8,17 @@
     android:orientation="vertical"
     tools:context=".view.WeatherActivity">
 
-    <fragment
-        android:id="@+id/fragment2"
-        android:name="com.example.jaguar.weather.view.FragmentWeatherSelect"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_weather_select" />
+        android:layout_height="60dp"
+        android:entries="@array/countrylist" />
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.example.jaguar.weather.view.FragmentWeatherList"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_list_weather" />
+        android:background="@color/colorPrimary"
+        android:scrollbars="vertical" />
 
 </LinearLayout>
