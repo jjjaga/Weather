@@ -1,22 +1,25 @@
 package com.example.jaguar.weather.presenter;
 
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import com.example.jaguar.weather.model.CallBack;
 import com.example.jaguar.weather.model.UpdateWeather;
 import com.example.jaguar.weather.model.WeatherObj;
+import com.example.jaguar.weather.view.WeatherActivity;
+
 import java.util.List;
 
 public class WeatherPresenter {
-    private WeatherAdapter wAdapter;
-    private Spinner sp;
+    private Spinner wSpinner;
+    private ProgressBar wProgressBar;
 
-    public WeatherPresenter(WeatherAdapter wAdapter, Spinner sp) {
-        this.wAdapter = wAdapter;
-        this.sp = sp;
+    public WeatherPresenter(Spinner sp, ProgressBar pb) {
+        this.wSpinner = sp;
+        this.wProgressBar = pb;
     }
 
     public void onSelect() {
-        new UpdateWeather(sp.getSelectedItem().toString(), "ru", "7", new CallBack() {
+        new UpdateWeather(wProgressBar, wSpinner.getSelectedItem().toString(), "ru", "7", new CallBack() {
             @Override
             public void UpdateWeather(List<WeatherObj> objs) {
                 updateWeatherList(objs);
@@ -25,7 +28,7 @@ public class WeatherPresenter {
 
     }
     private void updateWeatherList(List<WeatherObj> objs) {
-        wAdapter.setAll(objs);
+        WeatherActivity.wAdapter.setAll(objs);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.jaguar.weather.presenter;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,10 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherHolder>{
     List<WeatherObj> wList = new ArrayList<>();
     private Context context;
 
-
-    public WeatherAdapter(Context context) {
+    public WeatherAdapter(Context context, RecyclerView wRecyclerView) {
         this.context = context;
+        wRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        wRecyclerView.setAdapter(this);
     }
 
     @Override
