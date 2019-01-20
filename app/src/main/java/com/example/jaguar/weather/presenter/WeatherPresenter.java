@@ -1,34 +1,18 @@
 package com.example.jaguar.weather.presenter;
 
-import android.widget.ProgressBar;
-import android.widget.Spinner;
-import com.example.jaguar.weather.model.CallBack;
-import com.example.jaguar.weather.model.UpdateWeather;
-import com.example.jaguar.weather.model.WeatherObj;
-import com.example.jaguar.weather.view.WeatherActivity;
+import com.example.jaguar.weather.WeatherContract;
+import com.example.jaguar.weather.model.WeatherModel;
 
-import java.util.List;
+public class WeatherPresenter implements WeatherContract.WeatherPresenter {
+    private WeatherContract.WeatherView wView;
+    private WeatherContract.WeatherModel wModel;
 
-public class WeatherPresenter {
-    private Spinner wSpinner;
-    private ProgressBar wProgressBar;
-
-    public WeatherPresenter(Spinner sp, ProgressBar pb) {
-        this.wSpinner = sp;
-        this.wProgressBar = pb;
+    public WeatherPresenter(WeatherContract.WeatherView wView) {
+        this.wView = wView;
+        this.wModel = new WeatherModel();
     }
 
-    public void onSelect() {
-        new UpdateWeather(wProgressBar, wSpinner.getSelectedItem().toString(), "ru", "7", new CallBack() {
-            @Override
-            public void UpdateWeather(List<WeatherObj> objs) {
-                updateWeatherList(objs);
-            }
-        }).execute();
-
+    public void onSelect(String str) {
+        wView.updateAdapter(wModel.updateWeather(str));
     }
-    private void updateWeatherList(List<WeatherObj> objs) {
-        WeatherActivity.wAdapter.setAll(objs);
-    }
-
 }
