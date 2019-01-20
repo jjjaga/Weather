@@ -1,7 +1,10 @@
 package com.example.jaguar.weather.presenter;
 
 import com.example.jaguar.weather.WeatherContract;
+import com.example.jaguar.weather.model.CallBack;
 import com.example.jaguar.weather.model.WeatherModel;
+import com.example.jaguar.weather.model.WeatherObj;
+import java.util.List;
 
 public class WeatherPresenter implements WeatherContract.WeatherPresenter {
     private WeatherContract.WeatherView wView;
@@ -13,6 +16,12 @@ public class WeatherPresenter implements WeatherContract.WeatherPresenter {
     }
 
     public void onSelect(String str) {
-        wView.updateAdapter(wModel.updateWeather(str));
+        wModel.updateWeather(str, new CallBack(){
+            @Override
+            public void UpdateWeather(List<WeatherObj> objs) {
+                wView.updateAdapter(objs);
+            }
+        });
+
     }
 }
