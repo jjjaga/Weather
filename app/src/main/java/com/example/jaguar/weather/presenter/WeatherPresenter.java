@@ -1,6 +1,6 @@
 package com.example.jaguar.weather.presenter;
 
-import com.example.jaguar.weather.WeatherContract;
+import com.example.jaguar.weather.model.WeatherContract;
 import com.example.jaguar.weather.model.CallBack;
 import com.example.jaguar.weather.model.WeatherModel;
 import com.example.jaguar.weather.model.WeatherObj;
@@ -16,12 +16,13 @@ public class WeatherPresenter implements WeatherContract.WeatherPresenter {
     }
 
     public void onSelect(String str) {
+        wView.showProgress();
         wModel.updateWeather(str, new CallBack(){
             @Override
             public void UpdateWeather(List<WeatherObj> objs) {
                 wView.updateAdapter(objs);
+                wView.hideProgress();
             }
         });
-
     }
 }

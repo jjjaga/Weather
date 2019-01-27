@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import com.example.jaguar.weather.R;
-import com.example.jaguar.weather.WeatherContract;
+import com.example.jaguar.weather.model.WeatherContract;
 import com.example.jaguar.weather.model.WeatherObj;
 import com.example.jaguar.weather.presenter.WeatherAdapter;
 import com.example.jaguar.weather.presenter.WeatherPresenter;
@@ -29,18 +29,16 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
         wRecyclerView = findViewById(R.id.recyclerView);
         wSpinner = findViewById(R.id.spinner);
         wProgresBar = findViewById(R.id.progressBar);
+        wProgresBar.setVisibility(View.INVISIBLE);
         wRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         wAdapter = new WeatherAdapter(this);
         wRecyclerView.setAdapter(wAdapter);
-
         wPresenter = new WeatherPresenter(this);
 
         wSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //wProgresBar.setVisibility(View.VISIBLE);
                 wPresenter.onSelect(wSpinner.getSelectedItem().toString());
-                //wProgresBar.setVisibility(View.INVISIBLE);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -51,5 +49,15 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
     @Override
     public void updateAdapter(List<WeatherObj> objs) {
         wAdapter.setAll(objs);
+    }
+
+    @Override
+    public void showProgress() {
+        wProgresBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        wProgresBar.setVisibility(View.INVISIBLE);
     }
 }

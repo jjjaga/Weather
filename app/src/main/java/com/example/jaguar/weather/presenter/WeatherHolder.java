@@ -1,5 +1,7 @@
 package com.example.jaguar.weather.presenter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -8,32 +10,43 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.jaguar.weather.R;
+import com.example.jaguar.weather.model.CallBackImage;
 import com.example.jaguar.weather.model.WeatherObj;
+import com.example.jaguar.weather.view.WeatherFullActivity;
 import java.io.InputStream;
 
 public class WeatherHolder extends RecyclerView.ViewHolder {
-   public TextView weatherTextView;
-   public ImageView weatherImageView;
+   private TextView weatherTextView;
+   private ImageView weatherImageView;
 
-    public WeatherHolder(View itemView) {
+    public WeatherHolder(final View itemView, final Context context) {
         super(itemView);
         weatherImageView = itemView.findViewById(R.id.imageWeather);
         weatherTextView = itemView.findViewById(R.id.hello);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, WeatherFullActivity.class);
+                context.startActivity(intent.putExtra("textFor",weatherTextView.getText()));
+            }
+        });
     }
     public void bindCrime(WeatherObj wObj) {
+        new ImageLoad(wObj.getImage(), new CallBackImage() {
+            @Override
+            public void Bind(Bitmap bitmap) {
+                weatherImageView.setImageBitmap(bitmap);
+            }
+        }).execute();
         weatherTextView.setText(wObj.getText());
-        String UrliconWeather = wObj.getImage();
-        ImageLoad load = new ImageLoad(weatherImageView, UrliconWeather);
-        load.execute(wObj.getImage());
-
     }
     class ImageLoad extends AsyncTask<String, Void, Bitmap> {
-        private final ImageView weatherImageView;
         private final String image;
+        private final CallBackImage call;
 
-        public ImageLoad(ImageView weatherImgeView, String image) {
-            this.weatherImageView = weatherImgeView;
+        ImageLoad(String image, CallBackImage call) {
             this.image = image;
+            this.call = call;
         }
 
         protected Bitmap doInBackground(String... strings) {
@@ -48,7 +61,7 @@ public class WeatherHolder extends RecyclerView.ViewHolder {
         }
 
         protected void onPostExecute(Bitmap result) {
-            weatherImageView.setImageBitmap(result);
+            call.Bind(result);
         }
     }
 }
