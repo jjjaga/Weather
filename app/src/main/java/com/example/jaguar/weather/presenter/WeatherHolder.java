@@ -1,7 +1,7 @@
 package com.example.jaguar.weather.presenter;
 
+import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.example.jaguar.weather.R;
 import com.example.jaguar.weather.model.CallBackImage;
 import com.example.jaguar.weather.model.WeatherObj;
-import com.example.jaguar.weather.view.WeatherFullActivity;
 import java.io.InputStream;
 
 public class WeatherHolder extends RecyclerView.ViewHolder {
@@ -23,11 +22,17 @@ public class WeatherHolder extends RecyclerView.ViewHolder {
         super(itemView);
         weatherImageView = itemView.findViewById(R.id.imageWeather);
         weatherTextView = itemView.findViewById(R.id.hello);
+
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.activity_weather_full);
+        final TextView text = dialog.findViewById(R.id.text);
+
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, WeatherFullActivity.class);
-                context.startActivity(intent.putExtra("textFor",weatherTextView.getText()));
+
+                text.setText(weatherTextView.getText());
+                dialog.show();
             }
         });
     }
