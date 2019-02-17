@@ -17,7 +17,7 @@ import java.io.InputStream;
 public class WeatherHolder extends RecyclerView.ViewHolder {
     private final TextView weatherTextView;
     private final ImageView weatherImageView;
-
+//gh
     public WeatherHolder(final View itemView, final Context context) {
         super(itemView);
         weatherImageView = itemView.findViewById(R.id.imageWeather);
