@@ -7,8 +7,8 @@ import com.example.jaguar.weather.model.WeatherObj;
 import java.util.List;
 
 public class WeatherPresenter implements WeatherContract.WeatherPresenter {
-    private WeatherContract.WeatherView wView;
-    private WeatherContract.WeatherModel wModel;
+    private final WeatherContract.WeatherView wView;
+    private final WeatherContract.WeatherModel wModel;
 
     public WeatherPresenter(WeatherContract.WeatherView wView) {
         this.wView = wView;

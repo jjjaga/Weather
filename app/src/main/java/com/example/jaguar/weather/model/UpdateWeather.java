@@ -4,10 +4,10 @@ import android.os.AsyncTask;
 import org.json.JSONObject;
 
 public class UpdateWeather extends AsyncTask<Void, Void, JSONObject> {
-    private String city;
-    private String lang;
-    private String days;
-    private CallBack callback;
+    private final String city;
+    private final String lang;
+    private final String days;
+    private final CallBack callback;
 
     public UpdateWeather(String city, String lang, String days, CallBack callback) {
         this.city = city;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParseWeather {
-    private List<WeatherObj> list = new ArrayList<>();
+    private final List<WeatherObj> list = new ArrayList<>();
 
     public List<WeatherObj> parseWeather(JSONObject json){
 

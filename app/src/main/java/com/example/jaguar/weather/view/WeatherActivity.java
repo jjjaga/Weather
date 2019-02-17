@@ -11,7 +11,6 @@ import android.widget.Spinner;
 import com.example.jaguar.weather.R;
 import com.example.jaguar.weather.model.WeatherContract;
 import com.example.jaguar.weather.model.WeatherObj;
-import com.example.jaguar.weather.presenter.WeatherAdapter;
 import com.example.jaguar.weather.presenter.WeatherPresenter;
 import java.util.List;
 

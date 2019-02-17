@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.presenter;
+package com.example.jaguar.weather.view;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.jaguar.weather.R;
 import com.example.jaguar.weather.model.WeatherObj;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherHolder>{
-    List<WeatherObj> wList = new ArrayList<>();
-    private Context context;
+    private final List<WeatherObj> wList = new ArrayList<>();
+    private final Context context;
 
     public WeatherAdapter(Context context) {
         this.context = context;

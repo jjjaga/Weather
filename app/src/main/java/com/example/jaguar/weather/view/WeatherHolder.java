@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.presenter;
+package com.example.jaguar.weather.view;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -15,8 +15,8 @@ import com.example.jaguar.weather.model.WeatherObj;
 import java.io.InputStream;
 
 public class WeatherHolder extends RecyclerView.ViewHolder {
-   private TextView weatherTextView;
-   private ImageView weatherImageView;
+    private final TextView weatherTextView;
+    private final ImageView weatherImageView;
 
     public WeatherHolder(final View itemView, final Context context) {
         super(itemView);
@@ -39,7 +39,7 @@ public class WeatherHolder extends RecyclerView.ViewHolder {
     public void bindCrime(WeatherObj wObj) {
         new ImageLoad(wObj.getImage(), new CallBackImage() {
             @Override
-            public void Bind(Bitmap bitmap) {
+            public void bind(Bitmap bitmap) {
                 weatherImageView.setImageBitmap(bitmap);
             }
         }).execute();
@@ -66,7 +66,7 @@ public class WeatherHolder extends RecyclerView.ViewHolder {
         }
 
         protected void onPostExecute(Bitmap result) {
-            call.Bind(result);
+            call.bind(result);
         }
     }
 }
