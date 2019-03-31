@@ -5,7 +5,7 @@ import java.util.List;
 public interface WeatherContract {
 
     interface WeatherModel {
-        void updateWeather(String str, CallBack callBack);
+        void updateWeather(String str, CallBack call);
     }
     interface WeatherView {
         void updateAdapter(List<WeatherObj> objs);

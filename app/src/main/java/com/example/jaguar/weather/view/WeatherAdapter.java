@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherHolder>{
-    private final List<WeatherObj> wList = new ArrayList<>();
+    private static final List<WeatherObj> wList = new ArrayList<>();
     private final Context context;
 
     public WeatherAdapter(Context context) {
