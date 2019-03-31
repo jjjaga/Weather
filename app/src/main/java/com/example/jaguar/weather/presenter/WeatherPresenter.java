@@ -16,12 +16,12 @@ public class WeatherPresenter implements WeatherContract.WeatherPresenter {
     }
 
     public void onSelect(String str) {
-        //wView.showProgress();
-        //wModel.updateWeather(str);
+        wView.showProgress();
         wModel.updateWeather(str, new CallBack() {
             @Override
             public void UpdateWeather(List<WeatherObj> objs) {
                 wView.updateAdapter(objs);
+                wView.hideProgress();
             }
         });
     }

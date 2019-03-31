@@ -1,5 +1,7 @@
 package com.example.jaguar.weather.model.network;
 
+import android.support.annotation.NonNull;
+
 import com.example.jaguar.weather.model.CallBack;
 import com.example.jaguar.weather.model.ConstApi;
 import com.example.jaguar.weather.model.WeatherObj;
@@ -17,10 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitConnection {
     private Retrofit retrofit;
-    private String str;
     private List<WeatherObj> listWe = new ArrayList<>();
-  public RetrofitConnection(String str){
-      this.str = str;
+  public RetrofitConnection(){
       OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
       HttpLoggingInterceptor logger = new HttpLoggingInterceptor();
       logger.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -33,34 +33,36 @@ public class RetrofitConnection {
               .build();
   }
 
-  public void getWeatherFullTime(CallBack callBack){
+  public void getWeatherFullTime(String str, CallBack callBack){
         WeatherService weatherService = retrofit.create(WeatherService.class);
         Call<UserModelResponse> weather = weatherService.getWeather(
                 ConstApi.ACCSESS_TOKEN, str, "ru", "7");
 
         weather.enqueue(new Callback<UserModelResponse>() {
             @Override
-            public void onResponse(Call<UserModelResponse> call, Response<UserModelResponse> response) {
-                if(response.code() == 200) {
+            public void onResponse(@NonNull Call<UserModelResponse> call, @NonNull Response<UserModelResponse> response) {
+                int code = response.code();
+                switch (code){
+                    case 200:
                     System.out.println(response.body().location.getName());
+                    listWe.clear();
                     listWe.add(new WeatherObj("Город: " + response.body().location.getName()));
                     listWe.add(new WeatherObj("Город: " + response.body().location.getRegion()));
                     listWe.add(new WeatherObj("Город: " + response.body().location.getRegion()));
                     System.out.println(response.body().current.condition.getIcon());
-//                    Picasso.get()
-//                            .load("http:" + response.body().current.condition.getIcon())
-//                            .into(imageView);
-                    System.out.println(listWe.get(1).getText());
-                }else if(response.code() == 404){
+                    break;
+                    case 400:
                     System.out.println(" 404!!!!!!!!!!!");
-                }else{
+                    break;
+                    default:
                     System.out.println(" что-то пошло не так");
+                    break;
                 }
             }
 
             @Override
-            public void onFailure(Call<UserModelResponse> call, Throwable t) {
-
+            public void onFailure(@NonNull Call<UserModelResponse> call, @NonNull Throwable t) {
+                System.out.println(t);
             }
         });
         callBack.UpdateWeather(listWe);

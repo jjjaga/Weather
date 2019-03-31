@@ -1,31 +1,23 @@
 package com.example.jaguar.weather.view;
 
-import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.jaguar.weather.R;
 import com.example.jaguar.weather.model.WeatherObj;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherHolder>{
     private static final List<WeatherObj> wList = new ArrayList<>();
-    private final Context context;
-
-    public WeatherAdapter(Context context) {
-        this.context = context;
-
-    }
 
     @Override
-    public WeatherHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater li = LayoutInflater.from(context);
+    public WeatherHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater li = LayoutInflater.from(parent.getContext());
         View view = li.inflate(R.layout.list_item_weather, parent, false);
-        Context context = parent.getContext();
-        return new WeatherHolder(view, context);
+        return new WeatherHolder(view);
     }
 
     @Override

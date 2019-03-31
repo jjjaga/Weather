@@ -31,9 +31,9 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
         wProgresBar.setVisibility(View.INVISIBLE);
         wPresenter = new WeatherPresenter(this);
         wRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        wAdapter = new WeatherAdapter(this);
+        wAdapter = new WeatherAdapter();
         wRecyclerView.setAdapter(wAdapter);
-
+        //wPresenter.onSelect("Moscow");
         wSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
