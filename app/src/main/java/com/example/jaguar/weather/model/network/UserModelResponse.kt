@@ -1,234 +1,226 @@
-package com.example.jaguar.weather.model.network;
+package com.example.jaguar.weather.model.network
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
-public class UserModelResponse {
+class UserModelResponse {
     @SerializedName("location")
     @Expose
-    public Location location;
+    lateinit var location: Location
     @SerializedName("current")
     @Expose
-    public Current current;
+    lateinit var current: Current
     @SerializedName("forecast")
     @Expose
-    public Forecast forecast;
+    lateinit var forecast: Forecast
 
-    public class Location {
-        public String getName() {
-            return name;
-        }
+    inner class Location {
 
         @SerializedName("name")
         @Expose
-        public String name;
-
-        public String getRegion() {
-            return region;
-        }
+        lateinit var name: String
 
         @SerializedName("region")
         @Expose
-        public String region;
+        lateinit var region: String
         @SerializedName("country")
         @Expose
-        public String country;
+        lateinit var country: String
         @SerializedName("lat")
         @Expose
-        public float lat;
+        var lat: Float = 0.toFloat()
         @SerializedName("lon")
         @Expose
-        public float lon;
+        var lon: Float = 0.toFloat()
         @SerializedName("tz_id")
         @Expose
-        public String tzId;
+        lateinit var tzId: String
         @SerializedName("localtime_epoch")
         @Expose
-        public int localtimeEpoch;
+        var localtimeEpoch: Int = 0
         @SerializedName("localtime")
         @Expose
-        public String localtime;
+        lateinit var localtime: String
     }
 
-    public class Current {
+    inner class Current {
         @SerializedName("last_updated_epoch")
         @Expose
-        public int lastUpdatedEpoch;
+        var lastUpdatedEpoch: Int = 0
         @SerializedName("last_updated")
         @Expose
-        public String lastUpdated;
+        lateinit var lastUpdated: String
         @SerializedName("temp_c")
         @Expose
-        public float tempC;
+        var tempC: Float = 0.toFloat()
         @SerializedName("temp_f")
         @Expose
-        public float tempF;
+        var tempF: Float = 0.toFloat()
         @SerializedName("is_day")
         @Expose
-        public int isDay;
+        var isDay: Int = 0
         @SerializedName("condition")
         @Expose
-        public Condition condition;
+        lateinit var condition: Condition
         @SerializedName("wind_mph")
         @Expose
-        public float windMph;
+        var windMph: Float = 0.toFloat()
         @SerializedName("wind_kph")
         @Expose
-        public float windKph;
+        var windKph: Float = 0.toFloat()
         @SerializedName("wind_degree")
         @Expose
-        public int windDegree;
+        var windDegree: Int = 0
         @SerializedName("wind_dir")
         @Expose
-        public String windDir;
+        lateinit var windDir: String
         @SerializedName("pressure_mb")
         @Expose
-        public float pressureMb;
+        var pressureMb: Float = 0.toFloat()
         @SerializedName("pressure_in")
         @Expose
-        public float pressureIn;
+        var pressureIn: Float = 0.toFloat()
         @SerializedName("precip_mm")
         @Expose
-        public float precipMm;
+        var precipMm: Float = 0.toFloat()
         @SerializedName("precip_in")
         @Expose
-        public float precipIn;
+        var precipIn: Float = 0.toFloat()
         @SerializedName("humidity")
         @Expose
-        public int humidity;
+        var humidity: Int = 0
         @SerializedName("cloud")
         @Expose
-        public int cloud;
+        var cloud: Int = 0
         @SerializedName("feelslike_c")
         @Expose
-        public float feelslikeC;
+        var feelslikeC: Float = 0.toFloat()
         @SerializedName("feelslike_f")
         @Expose
-        public float feelslikeF;
+        var feelslikeF: Float = 0.toFloat()
         @SerializedName("vis_km")
         @Expose
-        public float visKm;
+        var visKm: Float = 0.toFloat()
         @SerializedName("vis_miles")
         @Expose
-        public float visMiles;
+        var visMiles: Float = 0.toFloat()
         @SerializedName("uv")
         @Expose
-        public float uv;
+        var uv: Float = 0.toFloat()
         @SerializedName("gust_mph")
         @Expose
-        public float gustMph;
+        var gustMph: Float = 0.toFloat()
         @SerializedName("gust_kph")
         @Expose
-        public float gustKph;
+        var gustKph: Float = 0.toFloat()
 
-        public class Condition {
+        inner class Condition {
             @SerializedName("text")
             @Expose
-            public String text;
-
-            public String getIcon() {
-                return icon;
-            }
+            lateinit var text: String
 
             @SerializedName("icon")
             @Expose
-            public String icon;
+            lateinit var icon: String
             @SerializedName("code")
             @Expose
-            public int code;
+            var code: Int = 0
 
         }
     }
-    public class Forecast {
+
+    inner class Forecast {
         @SerializedName("forecastday")
         @Expose
-        public List<Forecastday> forecastday = null;
-        public class Forecastday {
+        lateinit var forecastday: List<Forecastday>
+
+        inner class Forecastday {
             @SerializedName("date")
             @Expose
-            public String date;
+            lateinit var date: String
             @SerializedName("date_epoch")
             @Expose
-            public int dateEpoch;
+            var dateEpoch: Int = 0
             @SerializedName("day")
             @Expose
-            public Day day;
+            lateinit var day: Day
             @SerializedName("astro")
             @Expose
-            public Astro astro;
-            public class Day {
+            lateinit var astro: Astro
+
+            inner class Day {
                 @SerializedName("maxtemp_c")
                 @Expose
-                public float maxtempC;
+                var maxtempC: Float = 0.toFloat()
                 @SerializedName("maxtemp_f")
                 @Expose
-                public float maxtempF;
+                var maxtempF: Float = 0.toFloat()
                 @SerializedName("mintemp_c")
                 @Expose
-                public float mintempC;
+                var mintempC: Float = 0.toFloat()
                 @SerializedName("mintemp_f")
                 @Expose
-                public float mintempF;
+                var mintempF: Float = 0.toFloat()
                 @SerializedName("avgtemp_c")
                 @Expose
-                public float avgtempC;
+                var avgtempC: Float = 0.toFloat()
                 @SerializedName("avgtemp_f")
                 @Expose
-                public float avgtempF;
+                var avgtempF: Float = 0.toFloat()
                 @SerializedName("maxwind_mph")
                 @Expose
-                public float maxwindMph;
+                var maxwindMph: Float = 0.toFloat()
                 @SerializedName("maxwind_kph")
                 @Expose
-                public float maxwindKph;
+                var maxwindKph: Float = 0.toFloat()
                 @SerializedName("totalprecip_mm")
                 @Expose
-                public float totalprecipMm;
+                var totalprecipMm: Float = 0.toFloat()
                 @SerializedName("totalprecip_in")
                 @Expose
-                public float totalprecipIn;
+                var totalprecipIn: Float = 0.toFloat()
                 @SerializedName("avgvis_km")
                 @Expose
-                public float avgvisKm;
+                var avgvisKm: Float = 0.toFloat()
                 @SerializedName("avgvis_miles")
                 @Expose
-                public float avgvisMiles;
+                var avgvisMiles: Float = 0.toFloat()
                 @SerializedName("avghumidity")
                 @Expose
-                public float avghumidity;
+                var avghumidity: Float = 0.toFloat()
                 @SerializedName("condition")
                 @Expose
-                public Condition_ condition;
+                lateinit var condition: Condition_
                 @SerializedName("uv")
                 @Expose
-                public float uv;
-            }
-            public class Condition_ {
-                @SerializedName("text")
-                @Expose
-                public String text;
-                @SerializedName("icon")
-                @Expose
-                public String icon;
-                @SerializedName("code")
-                @Expose
-                public int code;
+                var uv: Float = 0.toFloat()
             }
 
-            public class Astro {
+            inner class Condition_ {
+                @SerializedName("text")
+                @Expose
+                lateinit var text: String
+                @SerializedName("icon")
+                @Expose
+                lateinit var icon: String
+                @SerializedName("code")
+                @Expose
+                var code: Int = 0
+            }
+
+            inner class Astro {
                 @SerializedName("sunrise")
                 @Expose
-                public String sunrise;
+                lateinit var sunrise: String
                 @SerializedName("sunset")
                 @Expose
-                public String sunset;
+                lateinit var sunset: String
                 @SerializedName("moonrise")
                 @Expose
-                public String moonrise;
+                lateinit var moonrise: String
                 @SerializedName("moonset")
                 @Expose
-                public String moonset;
+                lateinit var moonset: String
 
             }
         }
