@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.model
+package com.example.jaguar.weather.common
 
 object ConstApi{
     val BASE_URL: String

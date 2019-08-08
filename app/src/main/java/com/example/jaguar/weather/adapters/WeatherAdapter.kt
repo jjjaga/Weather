@@ -1,10 +1,10 @@
-package com.example.jaguar.weather.view
+package com.example.jaguar.weather.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.jaguar.weather.R
-import com.example.jaguar.weather.model.WeatherObj
+import com.example.jaguar.weather.common.WeatherObj
 import java.util.ArrayList
 
 class WeatherAdapter : RecyclerView.Adapter<WeatherHolder>() {

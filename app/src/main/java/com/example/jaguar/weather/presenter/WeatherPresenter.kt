@@ -1,20 +1,23 @@
 package com.example.jaguar.weather.presenter
 
-import com.example.jaguar.weather.model.CallBack
-import com.example.jaguar.weather.model.WeatherContract
+import com.arellomobile.mvp.InjectViewState
+import com.arellomobile.mvp.MvpPresenter
+import com.example.jaguar.weather.common.CallBack
 import com.example.jaguar.weather.model.WeatherModel
-import com.example.jaguar.weather.model.WeatherObj
+import com.example.jaguar.weather.common.WeatherObj
+import com.example.jaguar.weather.views.WeatherView
 
-class WeatherPresenter(var wView: WeatherContract.WeatherView) : WeatherContract.WeatherPresenter{
+@InjectViewState
+class WeatherPresenter : MvpPresenter<WeatherView>(){
 
-    private var wModel: WeatherContract.WeatherModel = WeatherModel()
+    private var wModel: WeatherModel = WeatherModel()
 
-    override fun onSelect(str: String) {
-        wView.showProgress()
+    fun onSelect(str: String) {
+        viewState.showProgress()
         wModel.updateWeather(str, object : CallBack {
             override fun UpdateWeather(objs: MutableList<WeatherObj>) {
-                wView.updateAdapter(objs)
-                wView.hideProgress()
+                viewState.updateAdapter(objs)
+                viewState.hideProgress()
             }
         })
     }

@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.model
+package com.example.jaguar.weather.common
 
 class WeatherObj(var text: String, var imgUrl: String, var weatherCondition: String, var date: String) {
 

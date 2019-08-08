@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.model.network
+package com.example.jaguar.weather.common
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

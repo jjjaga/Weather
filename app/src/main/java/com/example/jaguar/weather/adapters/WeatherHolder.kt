@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.view
+package com.example.jaguar.weather.adapters
 
 import android.app.Dialog
 import android.support.v7.widget.RecyclerView
@@ -7,7 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.jaguar.weather.R
-import com.example.jaguar.weather.model.WeatherObj
+import com.example.jaguar.weather.common.WeatherObj
+import kotlinx.android.synthetic.main.activity_weather_full.*
+import kotlinx.android.synthetic.main.list_item_weather.view.*
 
 class WeatherHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     private var weatherTextView: TextView
@@ -16,15 +18,15 @@ class WeatherHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     private var dateR: TextView
 
     init {
-        weatherTextView = this.itemView.findViewById(R.id.hello)
-        imageWeather = this.itemView.findViewById(R.id.imgV)
-        weatherCondition = this.itemView.findViewById(R.id.condition)
-        dateR = this.itemView.findViewById(R.id.date)
+        weatherTextView = this.itemView.hello
+        imageWeather = this.itemView.imgV
+        weatherCondition = this.itemView.condition
+        dateR = this.itemView.date
 
         var dialog = Dialog(this.itemView.context)
         dialog.setContentView(R.layout.activity_weather_full)
 
-        val text:TextView = dialog.findViewById(R.id.text)
+        val text:TextView = dialog.text
         itemView?.setOnClickListener {
             text.setText(weatherTextView.text)
             dialog.show()

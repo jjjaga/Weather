@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.model.network
+package com.example.jaguar.weather.common
 
 import retrofit2.Call
 import retrofit2.http.GET

@@ -1,8 +1,5 @@
-package com.example.jaguar.weather.model.network
+package com.example.jaguar.weather.common
 
-import com.example.jaguar.weather.model.CallBack
-import com.example.jaguar.weather.model.ConstApi
-import com.example.jaguar.weather.model.WeatherObj
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.*
