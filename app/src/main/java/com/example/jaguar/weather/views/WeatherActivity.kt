@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.activities
+package com.example.jaguar.weather.views
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -10,13 +10,15 @@ import com.example.jaguar.weather.R
 import com.example.jaguar.weather.adapters.WeatherAdapter
 import com.example.jaguar.weather.common.WeatherObj
 import com.example.jaguar.weather.presenter.WeatherPresenter
-import com.example.jaguar.weather.views.WeatherView
+import com.example.jaguar.weather.interfaces.WeatherView
 import kotlinx.android.synthetic.main.activity_weather.*
+import javax.inject.Inject
 
 
-class WeatherActivity : MvpAppCompatActivity(), WeatherView{
+class WeatherActivity : MvpAppCompatActivity(), WeatherView {
 
     private lateinit var wAdapter: WeatherAdapter
+
 
     @InjectPresenter
     lateinit var mWeatherPresenter: WeatherPresenter
@@ -24,6 +26,7 @@ class WeatherActivity : MvpAppCompatActivity(), WeatherView{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
+
         progressBar.visibility = View.INVISIBLE
         recyclerView.layoutManager = LinearLayoutManager(this)
         wAdapter = WeatherAdapter()

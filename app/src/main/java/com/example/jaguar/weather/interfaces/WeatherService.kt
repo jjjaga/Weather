@@ -1,5 +1,6 @@
-package com.example.jaguar.weather.common
+package com.example.jaguar.weather.interfaces
 
+import com.example.jaguar.weather.common.UserModelResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

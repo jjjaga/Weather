@@ -2,10 +2,10 @@ package com.example.jaguar.weather.presenter
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.example.jaguar.weather.common.CallBack
+import com.example.jaguar.weather.interfaces.CallBack
 import com.example.jaguar.weather.model.WeatherModel
 import com.example.jaguar.weather.common.WeatherObj
-import com.example.jaguar.weather.views.WeatherView
+import com.example.jaguar.weather.interfaces.WeatherView
 
 @InjectViewState
 class WeatherPresenter : MvpPresenter<WeatherView>(){

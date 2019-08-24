@@ -1,30 +1,21 @@
 package com.example.jaguar.weather.common
 
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import com.example.jaguar.weather.interfaces.CallBack
+import com.example.jaguar.weather.interfaces.DaggerWeatherComponent
+import com.example.jaguar.weather.interfaces.WeatherService
 import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.ArrayList
+import javax.inject.Inject
 
-class RetrofitConnection {
+class ParseWeather {
+    @Inject lateinit var retrofit: Connection
+
     private val listWe = ArrayList<WeatherObj>()
-    var retrofit : Retrofit
-
-    constructor(){
-        val httpClient = OkHttpClient.Builder()
-        val logger = HttpLoggingInterceptor()
-        logger.level = HttpLoggingInterceptor.Level.BODY
-        httpClient.addInterceptor(logger)
-
-         retrofit = Retrofit.Builder()
-                .baseUrl(ConstApi.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClient.build())
-                .build()
-    }
 
     fun getWeatherFullTime(str: String, callBack: CallBack) {
-        val weatherService : WeatherService = retrofit.create(WeatherService::class.java)
+        DaggerWeatherComponent.create().inject(this)
+
+        val weatherService : WeatherService = retrofit.some().create(WeatherService::class.java)
         val weather : Call<UserModelResponse> = weatherService.getWeather(
                 ConstApi.ACCSESS_TOKEN, str, "ru", "7")
 
@@ -53,7 +44,6 @@ class RetrofitConnection {
                 }
                 callBack.UpdateWeather(listWe)
             }
-
             override fun onFailure(call: Call<UserModelResponse>, t: Throwable) {
                 println(t)
             }

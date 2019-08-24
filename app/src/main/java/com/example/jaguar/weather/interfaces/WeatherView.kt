@@ -1,4 +1,4 @@
-package com.example.jaguar.weather.views
+package com.example.jaguar.weather.interfaces
 
 import com.arellomobile.mvp.MvpView
 import com.example.jaguar.weather.common.WeatherObj
